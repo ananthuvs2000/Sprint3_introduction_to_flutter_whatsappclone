@@ -4,15 +4,15 @@ import 'package:whatsappclone/models/single_chat_model.dart';
 import 'package:whatsappclone/pages/chatbubble.dart';
 import 'package:whatsappclone/widgets/utility_widget.dart';
 
-class chatDetails extends StatefulWidget {
-  chatDetails({super.key, required this.chatdata});
+class ChatDetails extends StatefulWidget {
+  ChatDetails({super.key, required this.chatdata});
   Chat chatdata;
 
   @override
-  State<chatDetails> createState() => _chatDetailsState();
+  State<ChatDetails> createState() => _ChatDetailsState();
 }
 
-class _chatDetailsState extends State<chatDetails> {
+class _ChatDetailsState extends State<ChatDetails> {
   List<SingleChat> messages=[
     SingleChat(isSend: true, isReaded: true, message: "Hello", sendAt: "9:00 am"),
     SingleChat(isSend: true, isReaded: false, message: "Heyyy", sendAt: "10:00 am"),
@@ -63,7 +63,7 @@ class _chatDetailsState extends State<chatDetails> {
             },
             itemBuilder: (BuildContext context) {
               return [
-                PopupMenuItem(value: 1, child: Text("View Contact")),
+                PopupMenuItem(value: 1, child: Text(widget.chatdata.isGroup==true?"Group info":"View Contact")),
                 PopupMenuItem(value: 2, child: Text("Media")),
                 PopupMenuItem(value: 3, child: Text("Search")),
                 PopupMenuItem(value: 4, child: Text("Mute notifications")),
@@ -109,7 +109,6 @@ class _chatDetailsState extends State<chatDetails> {
                             prefix: IconButton(onPressed: () {
                               
                             }, icon: Icon(Icons.emoji_emotions_outlined)),
-                            hintText: "Type a Message",
                             suffixIcon: Row( mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 IconButton(onPressed: () {
